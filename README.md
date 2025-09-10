@@ -1,7 +1,7 @@
 # 🔍 TruthLens - AI-Powered Misinformation Detection System
 
 **Version:** 2.0.0  
-**Platform:** Streamlit Web Application  
+**Platform:** Streamlit Web Application with React Frontend Integration  
 **Purpose:** Forensic-level misinformation detection and fact-checking system
 
 ---
@@ -9,15 +9,14 @@
 ## 📋 Table of Contents
 
 1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Installation & Setup](#installation--setup)
-4. [Project Structure](#project-structure)
-5. [File Documentation](#file-documentation)
-6. [API Services](#api-services)
-7. [User Interfaces](#user-interfaces)
-8. [Configuration](#configuration)
-9. [Usage Guide](#usage-guide)
-10. [Development](#development)
+2. [Architecture](#architecture)
+3. [Features](#features)
+4. [Installation & Setup](#installation--setup)
+5. [Project Structure](#project-structure)
+6. [React Frontend Integration](#react-frontend-integration)
+7. [Usage Guide](#usage-guide)
+8. [Development](#development)
+9. [Deployment](#deployment)
 
 ---
 
@@ -28,78 +27,167 @@ TruthLens is an advanced AI-powered misinformation detection system designed for
 ### Key Capabilities:
 - **Text Analysis**: Deep forensic analysis of text content for misinformation patterns
 - **Image Analysis**: Detection of manipulated or fake images
-- **News Verification**: Real-time news aggregation and verification
-- **Authority Dashboard**: Specialized interface for law enforcement and authorities
-- **Analytics Center**: Comprehensive data analysis and trend monitoring
-- **Educational Hub**: Digital literacy training and resources
+- **URL Investigation**: Verification of web sources and content authenticity
+- **Real-time Processing**: AI-powered analysis with immediate results
+- **Authority Dashboard**: Advanced monitoring tools for law enforcement
+- **Custom React Landing Page**: Modern, responsive user interface
+
+---
+
+## 🏗️ Architecture
+
+### Frontend-Backend Integration
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Browser (User Interface)                 │
+├─────────────────────────────────────────────────────────────┤
+│                    Streamlit Framework                      │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌──────────────┐ │
+│  │   Python Pages  │  │  Streamlit      │  │   Utilities  │ │
+│  │   - home.py     │  │  Components     │  │   - AI       │ │
+│  │   - archive.py  │  │  - Built-in     │  │   - Security │ │
+│  │   - learn.py    │  │  - Custom       │  │   - Database │ │
+│  │   - authority.py│  │                 │  │   - News     │ │
+│  └─────────────────┘  └─────────────────┘  └──────────────┘ │
+├─────────────────────────────────────────────────────────────┤
+│              Custom React Component Integration             │
+│  ┌─────────────────────────────────────────────────────────┐ │
+│  │             tl_frontend/ (React App)                    │ │
+│  │  ┌─────────────────────────────────────────────────────┐ │ │
+│  │  │               frontend/                             │ │ │
+│  │  │  ┌─────────────┐  ┌─────────────┐  ┌──────────────┐ │ │ │
+│  │  │  │     src/    │  │    dist/    │  │  node_modules│ │ │ │
+│  │  │  │ - React     │  │ - Built     │  │ - Dependencies│ │ │ │
+│  │  │  │ - TypeScript│  │ - Assets    │  │ - Vite       │ │ │ │
+│  │  │  │ - Tailwind  │  │ - Bundle    │  │ - Tailwind   │ │ │ │
+│  │  │  └─────────────┘  └─────────────┘  └──────────────┘ │ │ │
+│  │  └─────────────────────────────────────────────────────┘ │ │
+│  │  __init__.py (Streamlit Component Wrapper)              │ │
+│  └─────────────────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────┤
+│                     Backend Services                       │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
+│  │   AI APIs   │  │  Security   │  │   External APIs     │  │
+│  │  - Gemini   │  │  Services   │  │  - News Sources     │  │
+│  │  - Vision   │  │  - Auth     │  │  - Fact Checkers    │  │
+│  │  - Language │  │  - Validate │  │  - Social Platforms │  │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Data Flow:
+1. **User Interaction** → React Landing Page (Modern UI)
+2. **Authentication** → Streamlit Authentication System
+3. **Content Analysis** → AI Services (Gemini, Vision, etc.)
+4. **Results Display** → Streamlit Components + React UI Elements
+5. **Data Storage** → Firebase/Cloud Storage
 
 ---
 
 ## ✨ Features
 
-### 🔍 Core Analysis Features
-- **Forensic Text Analysis**: AI-powered content analysis with manipulation tactic detection
-- **Image Authenticity Detection**: Advanced image manipulation detection
-- **Real-time News Verification**: Live news aggregation and fact-checking
-- **Source Traceability**: Origin tracking and source credibility assessment
-- **Threat Level Assessment**: Risk scoring and threat classification
+### 🔍 **Analysis Capabilities**
+- **Text Forensics**: Detect manipulation patterns, emotional triggers, and misinformation
+- **Image Analysis**: AI-powered detection of deepfakes, edited images, and synthetic content
+- **URL Investigation**: Source verification, reputation scoring, and cross-referencing
+- **Multi-language Support**: Analysis in English, Hindi, Tamil, Telugu, Bengali, Marathi
 
-### 👮 Authority Features
-- **Live Dashboard**: Real-time monitoring of misinformation threats
-- **Alert System**: Automated threat detection and notification
-- **Investigation Tools**: Advanced forensic analysis tools
-- **Report Generation**: Comprehensive analysis reports
-- **User Activity Monitoring**: Track and analyze user behavior
+### 🎨 **User Interface**
+- **Modern React Landing Page**: Built with TypeScript, Vite, and Tailwind CSS
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+- **Interactive Components**: Smooth animations and modern UI elements
+- **Accessibility**: Screen reader compatible and keyboard navigation
 
-### 📊 Analytics & Intelligence
-- **Trend Analysis**: Misinformation pattern identification
-- **Source Intelligence**: Deep dive into content sources
-- **Performance Metrics**: System performance monitoring
-- **User Behavior Analysis**: Usage pattern insights
+### 🛡️ **Security & Authentication**
+- **Dual Access Modes**: Public access and Authority login
+- **Input Validation**: Protection against malicious inputs
+- **Rate Limiting**: Prevent abuse and ensure fair usage
+- **Audit Logging**: Track all analysis requests for monitoring
 
-### 🎓 Educational Features
-- **Learning Modules**: Interactive digital literacy training
-- **Case Studies**: Real-world misinformation examples
-- **Interactive Quizzes**: Knowledge testing and validation
-- **Resource Library**: Comprehensive educational materials
+### 📊 **Authority Features**
+- **Real-time Monitoring**: Track misinformation trends
+- **Bulk Analysis**: Process multiple items simultaneously
+- **Reporting Tools**: Generate comprehensive reports
+- **API Access**: Programmatic access for integration
 
 ---
 
 ## 🚀 Installation & Setup
 
 ### Prerequisites
-- Python 3.9 or higher
-- pip package manager
-- Internet connection for API services
+```bash
+# Required Software
+- Python 3.8+ 
+- Node.js 18+
+- npm or yarn
+```
 
-### Quick Start
+### Step 1: Clone Repository
+```bash
+git clone https://github.com/ssagar0805/React-on-Streamlit.git
+cd React-on-Streamlit
+```
 
-1. **Clone/Download the project**
-   ```bash
-   # Navigate to project directory
-   cd TruthLens_Old_Streamlit_Backup
-   ```
+### Step 2: Setup React Frontend
+```bash
+# Navigate to frontend directory
+cd tl_frontend/frontend
 
-2. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Install dependencies
+npm install
 
-3. **Run the Application**
-   ```bash
-   streamlit run app.py
-   ```
+# Build the React app
+npm run build
 
-4. **Access the Application**
-   - Open your browser to `http://localhost:8501`
-   - For admin access: `http://localhost:8501?admin=true`
+# Verify build output
+ls -la dist/
+```
 
-### Environment Variables (Optional)
-Create a `.env` file for custom API keys:
-```env
-GEMINI_API_KEY=your_gemini_api_key
-NEWSAPI_KEY=your_newsapi_key
-FIREBASE_API_KEY=your_firebase_key
+### Step 3: Setup Python Backend
+```bash
+# Return to root directory
+cd ../../
+
+# Install Python dependencies (essential packages)
+pip install streamlit==1.29.0 requests python-dotenv
+
+# Optional: Install additional dependencies as needed
+# pip install -r requirements.txt
+```
+
+### Step 4: Configure Environment
+```bash
+# Create Streamlit config (optional)
+mkdir -p ~/.streamlit
+cat > ~/.streamlit/config.toml << EOF
+[browser]
+gatherUsageStats = false
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+EOF
+```
+
+### Step 5: Launch Application
+
+#### Method A: Direct Launch
+```bash
+streamlit run app_simple.py --server.port 3001 --server.address 0.0.0.0
+```
+
+#### Method B: Using PM2 (Recommended for Production)
+```bash
+# Install PM2 if not already installed
+npm install -g pm2
+
+# Start with PM2
+pm2 start ecosystem.config.cjs
+
+# Check status
+pm2 list
+pm2 logs
 ```
 
 ---
@@ -107,282 +195,128 @@ FIREBASE_API_KEY=your_firebase_key
 ## 📁 Project Structure
 
 ```
-TruthLens_Old_Streamlit_Backup/
-├── app.py                          # Main application entry point
-├── config.py                       # Configuration management
-├── requirements.txt                # Python dependencies
-├── README.md                       # This documentation
-├── ADMIN_ACCESS.md                 # Admin access documentation
-├── cleanup_old_files.bat          # Cleanup utility script
+React-on-Streamlit/
+├── 📱 Frontend Integration
+│   └── tl_frontend/
+│       ├── __init__.py                    # Streamlit component wrapper
+│       └── frontend/                      # React application
+│           ├── src/                       # React source code
+│           │   ├── components/            # React components
+│           │   ├── pages/                 # React pages
+│           │   ├── App.tsx               # Main React app
+│           │   └── main.tsx              # React entry point
+│           ├── dist/                      # Built React app (output)
+│           │   ├── index.html            # Built HTML
+│           │   └── assets/               # Built JS/CSS/images
+│           ├── package.json              # Node.js dependencies
+│           ├── vite.config.ts           # Vite configuration
+│           └── tailwind.config.ts       # Tailwind CSS config
 │
-├── pages/                          # User interface modules
-│   ├── __init__.py
-│   ├── admin.py                    # Admin interface
-│   ├── analytics.py                # Analytics dashboard
-│   ├── authority.py                # Authority control center
-│   └── education.py                # Educational resources
+├── 🐍 Python Backend
+│   ├── app.py                           # Original Streamlit app
+│   ├── app_simple.py                    # Simplified test app
+│   ├── config.py                        # Configuration settings
+│   ├── requirements.txt                 # Python dependencies
+│   └── ecosystem.config.cjs             # PM2 configuration
 │
-├── utils/                          # Core service modules
-│   ├── __init__.py
-│   ├── ai_services.py              # AI and ML services
-│   ├── database.py                 # Database operations
-│   ├── news_services.py            # News aggregation
-│   ├── security.py                 # Security and authentication
-│   ├── email_service.py            # Email notifications
-│   └── google_cloud_services.py    # Google Cloud integration
+├── 📄 Pages
+│   ├── pages/
+│   │   ├── home.py                      # Main landing page with React component
+│   │   ├── archive.py                   # Analysis history
+│   │   ├── learn.py                     # Educational content
+│   │   └── authority.py                 # Authority dashboard
 │
-├── assets/                         # Static assets
-│   └── styles.css                  # Custom CSS styles
+├── 🔧 Utilities
+│   └── utils/
+│       ├── ai_services.py               # AI service integrations
+│       ├── news_services.py             # News aggregation
+│       ├── security.py                  # Security services
+│       └── database.py                  # Database operations
 │
-└── __pycache__/                    # Python cache files
+├── 🎨 Assets
+│   └── assets/
+│       └── styles.css                   # Custom CSS
+│
+└── 📚 Documentation
+    ├── README.md                        # This file
+    └── *.md                            # Additional documentation
 ```
 
 ---
 
-## 📄 File Documentation
+## ⚛️ React Frontend Integration
 
-### Core Application Files
+### Architecture Overview
+The React frontend is integrated into the Streamlit app using **Streamlit Components**:
 
-#### `app.py` (1,360 lines)
-**Main application entry point and orchestrator**
+1. **React App**: Built with modern tools (Vite, TypeScript, Tailwind CSS)
+2. **Build Process**: Compiles to static files in `tl_frontend/frontend/dist/`  
+3. **Python Wrapper**: `tl_frontend/__init__.py` exposes React component to Streamlit
+4. **Integration**: `pages/home.py` imports and renders the React landing page
 
-**Key Functions:**
-- `main()`: Primary application controller
-- `load_custom_css()`: UI styling management
-- `check_authentication()`: User authentication system
-- `text_analyzer_interface()`: Text analysis UI
-- `image_analysis_interface()`: Image analysis UI
-- `news_center_interface()`: News verification UI
-- `display_api_status()`: API connectivity monitoring
-- `load_demo_data()`: Demo data population
+### Key Files
 
-**Features:**
-- Multi-interface routing system
-- Real-time API status monitoring
-- Demo data loading functionality
-- Responsive UI with custom styling
-- Authentication and authorization
+#### `tl_frontend/__init__.py`
+```python
+import streamlit.components.v1 as components
+from pathlib import Path
 
-#### `config.py` (50 lines)
-**Centralized configuration management**
+# Locate the build folder
+_build_dir = Path(__file__).parent / "frontend" / "dist"
 
-**Key Classes:**
-- `Config`: Main configuration class
-- `setup_page_config()`: Streamlit page configuration
+# Declare the component, pointing at the build directory
+tl_frontend = components.declare_component(
+    name="tl_frontend",
+    path=str(_build_dir)
+)
 
-**Configuration Areas:**
-- API keys (Gemini, NewsAPI, Firebase)
-- Google Cloud settings
-- Application metadata
-- Environment variable management
+def render_landing(**kwargs):
+    """Render the custom TruthLens landing page component."""
+    return tl_frontend(**kwargs)
+```
 
-### Service Modules (`utils/`)
+#### `pages/home.py` (React Integration)
+```python
+from tl_frontend import render_landing
 
-#### `ai_services.py` (274 lines)
-**AI and machine learning services**
+def show_home():
+    # Render React Landing Page Component
+    render_landing()
+    
+    # Continue with Streamlit components...
+```
 
-**Key Classes:**
-- `GeminiService`: Google Gemini AI integration
-- `FactCheckService`: Google Fact Check Tools API
+### React Component Features
+- **Modern UI**: Built with React 18, TypeScript, and Tailwind CSS
+- **Component Library**: Uses shadcn/ui for consistent design system
+- **Responsive**: Mobile-first design with responsive breakpoints
+- **Accessibility**: ARIA labels, keyboard navigation, screen reader support
+- **Performance**: Optimized with Vite build system
 
-**GeminiService Methods:**
-- `forensic_analysis()`: Deep content analysis with manipulation detection
-- `trace_origin()`: Content origin tracing
-- `analyze_context()`: Missing context analysis
-- `extract_sources_and_reporting()`: Source extraction and reporting info
-- `test_connection()`: API connectivity testing
+### Development Workflow
 
-**FactCheckService Methods:**
-- `search_claims()`: Fact-checked claims search
-- `test_connection()`: API connectivity testing
+#### Frontend Development
+```bash
+cd tl_frontend/frontend
 
-#### `database.py` (216 lines)
-**Database operations and data management**
+# Development mode (with hot reload)
+npm run dev
 
-**Key Class:**
-- `FirebaseService`: Firebase database simulation
+# Build for production
+npm run build
 
-**Key Methods:**
-- `save_analysis()`: Save text analysis results
-- `save_image_analysis()`: Save image analysis results
-- `get_statistics()`: Retrieve system statistics
-- `get_recent_analyses()`: Get recent analysis history
-- `get_trending_threats()`: Get trending threat topics
-- `get_analytics_data()`: Get analytics data for charts
-- `populate_demo_data()`: Load demo data
+# Preview build
+npm run preview
+```
 
-#### `news_services.py` (152 lines)
-**News aggregation and verification**
+#### Integration Testing
+```bash
+# Build React frontend first
+cd tl_frontend/frontend && npm run build
 
-**Key Class:**
-- `NewsAggregator`: News API integration
-
-**Key Methods:**
-- `get_breaking_news()`: Fetch breaking news headlines
-- `search_news()`: Search for specific news topics
-- `verify_article()`: Article verification
-- `get_trending_topics()`: Extract trending topics
-- `test_connection()`: API connectivity testing
-
-#### `security.py` (306 lines)
-**Security and authentication services**
-
-**Key Class:**
-- `SecurityService`: Security management
-
-**Key Methods:**
-- `verify_authority_credentials()`: Authority user authentication
-- `get_authority_info()`: Get user information
-- `analyze_content_safety()`: Content safety analysis
-- `detect_manipulation_tactics()`: Manipulation tactic detection
-- `generate_security_report()`: Security report generation
-- `check_content_flags()`: Content flag checking
-
-### User Interface Modules (`pages/`)
-
-#### `authority.py` (646 lines)
-**Authority control center and monitoring dashboard**
-
-**Key Functions:**
-- `authority_interface()`: Main authority dashboard
-- `live_dashboard()`: Real-time monitoring
-- `alert_system()`: Threat alert management
-- `analytics_center()`: Authority analytics
-- `investigation_tools()`: Forensic investigation tools
-- `reports_logs()`: Report generation and logging
-
-**Features:**
-- Real-time threat monitoring
-- Advanced investigation tools
-- Comprehensive reporting system
-- User activity tracking
-- Alert management system
-
-#### `analytics.py` (472 lines)
-**Advanced analytics and data visualization**
-
-**Key Functions:**
-- `analytics_interface()`: Main analytics dashboard
-- `trend_analysis()`: Misinformation trend analysis
-- `content_analytics()`: Content analysis metrics
-- `source_intelligence()`: Source analysis and intelligence
-- `user_behavior_analysis()`: User behavior insights
-- `performance_metrics()`: System performance monitoring
-
-**Features:**
-- Interactive data visualizations
-- Trend forecasting
-- Source credibility analysis
-- User behavior tracking
-- Performance metrics dashboard
-
-#### `education.py` (660 lines)
-**Educational resources and training modules**
-
-**Key Functions:**
-- `educational_interface()`: Main education hub
-- `learning_modules()`: Interactive learning modules
-- `interactive_quiz()`: Knowledge testing system
-- `case_studies()`: Real-world case studies
-- `training_center()`: Professional training
-- `educational_resources()`: Resource library
-
-**Features:**
-- Multi-level learning paths
-- Interactive quizzes and assessments
-- Real-world case studies
-- Professional training modules
-- Comprehensive resource library
-
----
-
-## 🔌 API Services
-
-### Google Gemini AI
-- **Purpose**: Advanced content analysis and misinformation detection
-- **Models Used**: gemini-1.5-pro, gemini-1.5-flash
-- **Features**: Forensic analysis, origin tracing, context analysis
-
-### Google Fact Check Tools
-- **Purpose**: Fact-checked claims verification
-- **Features**: Claims search, publisher verification, verdict checking
-
-### NewsAPI
-- **Purpose**: Real-time news aggregation
-- **Features**: Breaking news, news search, article verification
-
-### Firebase (Simulated)
-- **Purpose**: Data storage and analytics
-- **Features**: Analysis storage, statistics tracking, user management
-
----
-
-## 🎨 User Interfaces
-
-### 1. 🔍 Text Analyzer
-- **Purpose**: Analyze text content for misinformation
-- **Features**: 
-  - Forensic-level content analysis
-  - Manipulation tactic detection
-  - Source credibility assessment
-  - Risk scoring and threat classification
-
-### 2. 🖼️ Image Analysis
-- **Purpose**: Detect manipulated or fake images
-- **Features**:
-  - Image authenticity verification
-  - Manipulation detection
-  - Metadata analysis
-  - Visual forensics
-
-### 3. 📰 News Center
-- **Purpose**: Real-time news verification and aggregation
-- **Features**:
-  - Breaking news headlines
-  - News search and filtering
-  - Article verification
-  - Source credibility checking
-
-### 4. 👮 Authority Dashboard
-- **Purpose**: Specialized interface for authorities and law enforcement
-- **Features**:
-  - Real-time threat monitoring
-  - Advanced investigation tools
-  - Alert management system
-  - Comprehensive reporting
-
-### 5. 📊 Analytics
-- **Purpose**: Data analysis and trend monitoring
-- **Features**:
-  - Trend analysis and forecasting
-  - Content analytics
-  - Source intelligence
-  - User behavior analysis
-
-### 6. 🎓 Education
-- **Purpose**: Digital literacy training and education
-- **Features**:
-  - Interactive learning modules
-  - Case studies and examples
-  - Knowledge testing
-  - Resource library
-
----
-
-## ⚙️ Configuration
-
-### API Keys Required
-- **Gemini API Key**: For AI content analysis
-- **NewsAPI Key**: For news aggregation
-- **Firebase Keys**: For data storage (optional)
-
-### Environment Variables
-```env
-GEMINI_API_KEY=your_gemini_key
-NEWSAPI_KEY=your_newsapi_key
-FIREBASE_API_KEY=your_firebase_key
-FIREBASE_AUTH_DOMAIN=your_domain
-FIREBASE_PROJECT_ID=your_project_id
+# Return to root and test Streamlit app
+cd ../../
+streamlit run app_simple.py --server.port 3001
 ```
 
 ---
@@ -390,82 +324,176 @@ FIREBASE_PROJECT_ID=your_project_id
 ## 📖 Usage Guide
 
 ### For Public Users
-1. **Launch the application**: `streamlit run app.py`
-2. **Select Text Analyzer**: Analyze suspicious text content
-3. **Use Image Analysis**: Check images for manipulation
-4. **Browse News Center**: Verify news articles
-5. **Access Education**: Learn about misinformation
 
-### For Authority Personnel
-1. **Access Authority Dashboard**: Select from sidebar
-2. **Enter credentials**: Use provided authority credentials
-3. **Monitor threats**: Use live dashboard for real-time monitoring
-4. **Investigate cases**: Use investigation tools for deep analysis
-5. **Generate reports**: Create comprehensive analysis reports
+1. **Access the Application**
+   - Open the application URL in your browser
+   - You'll see the modern React landing page
 
-### For Administrators
-1. **Access admin panel**: Navigate to `?admin=true`
-2. **Manage system**: Configure settings and monitor performance
-3. **View analytics**: Access comprehensive system analytics
-4. **Manage users**: Handle user accounts and permissions
+2. **Authentication**
+   - Click "🚀 Enter App (Test Mode)" for public access
+   - No registration required for basic features
+
+3. **Analysis Options**
+   - **Text Analysis**: Paste text content for fact-checking
+   - **URL Investigation**: Enter URLs for source verification
+   - **Image Analysis**: Upload images for manipulation detection
+
+### For Authority Users
+
+1. **Authority Login**
+   - Select "👮 Authority Login" on the landing page
+   - Enter credentials provided by system administrator
+   - Access advanced monitoring and reporting tools
+
+2. **Advanced Features**
+   - Bulk analysis capabilities  
+   - Real-time monitoring dashboard
+   - Comprehensive reporting tools
+   - API access for integrations
 
 ---
 
 ## 🛠️ Development
 
 ### Adding New Features
-1. **Create new page**: Add to `pages/` directory
-2. **Add service**: Create in `utils/` directory
-3. **Update routing**: Modify `app.py` main function
-4. **Add configuration**: Update `config.py` if needed
+
+#### Frontend (React)
+```bash
+# Add new React component
+cd tl_frontend/frontend/src/components
+# Create new component file
+# Import and use in pages
+
+# Rebuild after changes
+npm run build
+```
+
+#### Backend (Streamlit)
+```bash
+# Add new Streamlit page
+# Create in pages/ directory
+# Import in main app.py
+```
+
+### Debugging
+
+#### React Component Issues
+```bash
+# Check browser console for JavaScript errors
+# Verify build output exists: tl_frontend/frontend/dist/
+# Test React component in isolation: npm run dev
+```
+
+#### Streamlit Issues
+```bash
+# Check PM2 logs: pm2 logs
+# Test without React component
+# Verify Python dependencies: pip list
+```
 
 ### Testing
-- **API Testing**: Use built-in connection tests
-- **Demo Data**: Load demo data for testing
-- **Error Handling**: Comprehensive error handling throughout
 
-### Dependencies
-- **Core**: Streamlit, Pandas, NumPy
-- **AI/ML**: Google Generative AI, Transformers, PyTorch
-- **Data**: Plotly, Matplotlib, Seaborn
-- **APIs**: Requests, HTTPX, BeautifulSoup
-- **Cloud**: Google Cloud services, Firebase
-- **Security**: Cryptography, BCrypt
+```bash
+# Test React build
+cd tl_frontend/frontend && npm run build
 
----
+# Test Python imports
+python -c "from tl_frontend import render_landing; print('Success')"
 
-## 🚨 Important Notes
-
-### Security Considerations
-- **API Keys**: Store securely, never commit to version control
-- **Authority Access**: Use strong credentials for authority accounts
-- **Data Privacy**: Ensure compliance with data protection regulations
-
-### Performance
-- **API Limits**: Be aware of API rate limits
-- **Caching**: Implement caching for better performance
-- **Error Handling**: Robust error handling for production use
-
-### Scalability
-- **Database**: Consider real Firebase implementation for production
-- **Caching**: Implement Redis or similar for caching
-- **Load Balancing**: Use multiple instances for high traffic
+# Test full application
+streamlit run app_simple.py --server.port 3001
+```
 
 ---
 
-## 📞 Support & Contact
+## 🚀 Deployment
 
-For technical support, feature requests, or bug reports:
-- **GitHub Issues**: Create an issue in the repository
-- **Documentation**: Refer to this README and code comments
-- **API Documentation**: Check individual service documentation
+### Local Development
+```bash
+# Development mode with hot reload
+streamlit run app_simple.py --server.port 3001
+
+# Production mode with PM2
+pm2 start ecosystem.config.cjs
+```
+
+### Production Deployment
+
+#### Prerequisites
+- Server with Python 3.8+ and Node.js 18+
+- Domain name (optional)
+- SSL certificate (recommended)
+
+#### Steps
+```bash
+# 1. Clone and setup
+git clone https://github.com/ssagar0805/React-on-Streamlit.git
+cd React-on-Streamlit
+
+# 2. Build frontend
+cd tl_frontend/frontend
+npm install && npm run build
+
+# 3. Setup backend
+cd ../../
+pip install -r requirements.txt
+
+# 4. Configure environment variables
+# Set up API keys, database connections, etc.
+
+# 5. Deploy with PM2
+pm2 start ecosystem.config.cjs
+pm2 save
+pm2 startup
+```
+
+#### Environment Variables
+```bash
+# Required environment variables
+GOOGLE_API_KEY=your_gemini_api_key
+FIREBASE_CONFIG=your_firebase_config
+NEWS_API_KEY=your_news_api_key
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly (both React and Streamlit components)
+5. Submit a pull request
+
+### Code Standards
+- **Python**: Follow PEP 8
+- **React/TypeScript**: Use ESLint and Prettier
+- **Commits**: Use conventional commit messages
+- **Documentation**: Update README.md for significant changes
 
 ---
 
 ## 📄 License
 
-This project is developed for educational and research purposes. Please ensure compliance with all applicable laws and regulations when using this system.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-**TruthLens v2.0.0** - Advanced AI-Powered Misinformation Detection System
+## 🙋 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Contact the development team
+- Check the documentation wiki
+
+---
+
+## 🔄 Version History
+
+- **v2.0.0** - React frontend integration, modern UI
+- **v1.0.0** - Initial Streamlit application
+- **v0.1.0** - MVP with basic features
+
+---
+
+*TruthLens - Empowering truth in the digital age* 🔍✨
