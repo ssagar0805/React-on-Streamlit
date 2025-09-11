@@ -1,14 +1,35 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TruthLens - AI-Powered Fact Checking for India</title>
-    <meta name="description" content="Detect, verify, and report misinformation with TruthLens. AI-powered fact-checking platform helping build a more informed India." />
-    <script type="module" crossorigin src="/assets/index-BUXLig3V.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Dis_EliN.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>TruthLens Component</title>
+  <link rel="stylesheet" href="./assets/index-Dis_EliN.css">
+</head>
+<body>
+  <div id="root"></div>
+  
+  <!-- Streamlit communication setup -->
+  <script>
+    // Set up Streamlit communication
+    function onRender(event) {
+      // Get Streamlit's theming information and pass it to React
+      const {theme} = event.detail;
+      
+      // Initialize the React component
+      window.initializeComponent(theme);
+    }
+    
+    // Listen for render events
+    window.addEventListener("message", onRender);
+    
+    // Tell Streamlit we're ready
+    window.parent.postMessage({
+      type: "streamlit:componentReady",
+      apiVersion: 1,
+    }, "*");
+  </script>
+  
+  <script type="module" src="./assets/index-sBCUk_2C.js"></script>
+</body>
 </html>
